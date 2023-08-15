@@ -4,7 +4,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 import random
 
-# 替换为你的URL列表
 url_list = [
     "https://www.polimi.it/",
     "https://www.polito.it/",
@@ -23,22 +22,19 @@ url_list = [
     "https://scholar.google.com.hk/?hl=zh-CN",
     "https://ieeexplore.ieee.org/abstract/document/8418688/",
     "https://www.bbc.com/news/world"
-    # ...添加更多URL
+
 ]
 
-# 创建一个Chrome浏览器实例
 driver = webdriver.Chrome()
 initial_window = driver.current_window_handle
-# 遍历URL列表
-while 1==1:
+
+while 1 == 1:
     for url in url_list:
         try:
 
-            # 打开URL
             driver.get(url)
             print(f"Visited {url}")
 
-            # 在每个页面上停留7秒钟
             time.sleep(random.randint(7, 15))
 
             actions = ActionChains(driver)
@@ -50,9 +46,11 @@ while 1==1:
             actions.send_keys(Keys.PAGE_DOWN).perform()
 
             time.sleep(random.randint(7, 15))
+
+            driver.delete_all_cookies()
         except Exception as e:
             with open("stop_flag.txt", "w") as flag_file:
                 flag_file.write("1")
 
-# 关闭浏览器
+
 driver.quit()
