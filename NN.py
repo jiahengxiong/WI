@@ -44,7 +44,7 @@ def data_process(num, youtube_path, idle_path, web_path):
     return train_data, train_label
 
 if __name__ == "__main__":
-    youtube_path = "D:\\WI_origin\\dataset\\train\\youtube.csv"
+    youtube_path = "D:\\WI_origin\\dataset\\test\\youtube.csv"
     idle_path = "D:\\WI_origin\\dataset\\train\\idle.csv"
     web_path = "D:\\WI_origin\\dataset\\train\\web.csv"
 

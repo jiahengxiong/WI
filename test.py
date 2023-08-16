@@ -3,7 +3,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
-from NN import data_process
+from RF_model import data_process
 
 label_mapping = {
     "YouTube": 0,
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     youtube_path = "D:\\WI_origin\\dataset\\test\\youtube.csv"
     idle_path = "D:\\WI_origin\\dataset\\test\\idle.csv"
     web_path = "D:\\WI_origin\\dataset\\test\\web.csv"
-    model_filename = "D:\\WI_origin\\model\\random_forest_model.joblib"
+    model_filename = "D:\\WI_origin\\model\\best_random_forest_model.joblib"
 
     test_data, test_label = data_process(num=100, youtube_path=youtube_path, idle_path=idle_path, web_path=web_path)
 

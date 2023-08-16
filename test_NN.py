@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from NN import  data_process
 
 # Load test data
-youtube_path = "D:\\WI_origin\\dataset\\test\\yuotube.csv"
+youtube_path = "D:\\WI_origin\\dataset\\test\\youtube.csv"
 idle_path = "D:\\WI_origin\\dataset\\test\\idle.csv"
 web_path = "D:\\WI_origin\\dataset\\test\\web.csv"
 test_data, test_label = data_process(num=100, youtube_path=youtube_path, idle_path=idle_path, web_path=web_path)

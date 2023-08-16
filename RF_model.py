@@ -63,11 +63,19 @@ if __name__ == "__main__":
     # 创建随机森林分类器
     rf_classifier = RandomForestClassifier()
 
-    # 训练模型
-    rf_classifier.fit(train_data, train_label.values.ravel())
+    # 创建网格搜索对象
+    grid_search = GridSearchCV(estimator=rf_classifier, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1)
 
-    # 保存模型
-    model_filename = "D:\\WI_origin\\model\\random_forest_model.joblib"
-    joblib.dump(rf_classifier, model_filename)
+    # 进行参数搜索
+    grid_search.fit(train_data, train_label.values.ravel())
 
-    print("Model saved as", model_filename)
+    # 输出最佳参数组合和得分
+    print("Best parameters:", grid_search.best_params_)
+    print("Best accuracy:", grid_search.best_score_)
+
+    # 保存最佳模型
+    best_rf_classifier = grid_search.best_estimator_
+    model_filename = "D:\\WI_origin\\model\\best_random_forest_model.joblib"
+    joblib.dump(best_rf_classifier, model_filename)
+
+    print("Best model saved as", model_filename)

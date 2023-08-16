@@ -11,7 +11,7 @@ import joblib
 
 
 MAC = 'a0:29:42:f2:b0:52'
-model_filename = "D:\\WI_origin\\model\\random_forest_model.joblib"
+model_filename = "D:\\WI_origin\\model\\best_random_forest_model.joblib"
 
 column_names = ["up", "down", "mean_length", "var_length", "mean_time", "var_time"]
 csv_filename = "data.csv"
