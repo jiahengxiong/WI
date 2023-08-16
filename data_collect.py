@@ -41,8 +41,9 @@ def data_processing(up, down, interval_time, length):
 
         csvwriter.writerow(data)
 def packet_callback(pack):
+    if pack['Ethernet'].dst == MAC or pack['Ethernet'].src == MAC:
 
-    interval_time.append(time.time())
+        interval_time.append(time.time())
 
 while 1 == 1:
     if os.path.exists("stop_flag.txt"):

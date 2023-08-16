@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import joblib
 from sklearn.model_selection import GridSearchCV
-
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 # Create label mapping dictionary
 label_mapping = {
         "YouTube": 0,
@@ -47,7 +47,8 @@ if __name__ == "__main__":
     idle_path = "D:\\WI_origin\\dataset\\train\\idle.csv"
     web_path = "D:\\WI_origin\\dataset\\train\\web.csv"
 
-    train_data, train_label = data_process(num=1000, youtube_path=youtube_path, idle_path=idle_path, web_path=web_path)
+    train_data, train_label = data_process(num=2000, youtube_path=youtube_path, idle_path=idle_path, web_path=web_path)
+
 
     # Define the candidate values for parameters
     param_grid = {
@@ -59,22 +60,14 @@ if __name__ == "__main__":
         'random_state': [99]
     }
 
-    # Create a RandomForestClassifier
+    # 创建随机森林分类器
     rf_classifier = RandomForestClassifier()
 
-    # Create a GridSearchCV object
-    grid_search = GridSearchCV(estimator=rf_classifier, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+    # 训练模型
+    rf_classifier.fit(train_data, train_label.values.ravel())
 
-    # Perform parameter search
-    grid_search.fit(train_data, train_label.values.ravel())
+    # 保存模型
+    model_filename = "D:\\WI_origin\\model\\random_forest_model.joblib"
+    joblib.dump(rf_classifier, model_filename)
 
-    # Output the best parameter combination and score
-    print("Best parameters:", grid_search.best_params_)
-    print("Best accuracy:", grid_search.best_score_)
-
-    # Save the best model
-    best_rf_classifier = grid_search.best_estimator_
-    model_filename = "D:\\WI_origin\\model\\best_random_forest_model.joblib"
-    joblib.dump(best_rf_classifier, model_filename)
-
-    print("Best model saved as", model_filename)
+    print("Model saved as", model_filename)

@@ -12,7 +12,7 @@ label_mapping = {
 }
 
 if __name__ == "__main__":
-    youtube_path = "D:\\WI_origin\\dataset\\test\\yuotube.csv"
+    youtube_path = "D:\\WI_origin\\dataset\\test\\youtube.csv"
     idle_path = "D:\\WI_origin\\dataset\\test\\idle.csv"
     web_path = "D:\\WI_origin\\dataset\\test\\web.csv"
     model_filename = "D:\\WI_origin\\model\\random_forest_model.joblib"
@@ -29,6 +29,7 @@ if __name__ == "__main__":
 
     # Generate a confusion matrix
     confusion_mat = confusion_matrix(test_label, y_pred)
+    print(confusion_mat)
 
     class_names = ["YouTube", "Web", "Idle"]
 

@@ -5,7 +5,7 @@
 from scapy.all import *
 import numpy as np
 import csv
-import  pandas as pd
+import pandas as pd
 
 import joblib
 
@@ -59,8 +59,9 @@ def data_processing(up, down, interval_time, length):
     data.append(var_time)
     return data
 def packet_callback(pack):
+    if pack['Ethernet'].dst == MAC or pack['Ethernet'].src == MAC:
 
-    interval_time.append(time.time())
+        interval_time.append(time.time())
 
 loaded_rf_classifier = joblib.load(model_filename)
 

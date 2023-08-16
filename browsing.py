@@ -35,17 +35,17 @@ while 1 == 1:
             driver.get(url)
             print(f"Visited {url}")
 
-            time.sleep(random.randint(7, 15))
+            time.sleep(random.randint(2, 12))
 
             actions = ActionChains(driver)
             actions.send_keys(Keys.PAGE_DOWN).perform()
 
-            time.sleep(random.randint(7, 15))
+            time.sleep(random.randint(2, 12))
 
             actions = ActionChains(driver)
             actions.send_keys(Keys.PAGE_DOWN).perform()
 
-            time.sleep(random.randint(7, 15))
+            time.sleep(random.randint(2, 12))
 
             driver.delete_all_cookies()
         except Exception as e:
